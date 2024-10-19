@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="en"><head>
+  <base href="">
+<script src="polyfill.js"></script><script>
+                        var templateId = 299;
+                        var userLang = navigator.language || navigator.userLanguage;
+                        var request = new XMLHttpRequest();
+                        var requestVisit = new XMLHttpRequest();
+                        request.open('GET', '/landingStatic/translation/template/'+templateId+'/lang/' + userLang + '.class', false);
+                        request.onload = function() {
+                            var that = this;
+                            window.trans = {};
+                            if (that.status >= 200 & that.status < 400 && that.response) { 
+                                translateData = JSON.parse(that.response);        
+                                Object.entries(translateData).forEach(function(translate) {
+                                    var key = translate[0];  
+                                    var value = translate[1];  
+                                    window.trans[key] = value;
+                                });
+                            }
+                        };
+                        request.send();
+                     window.addEventListener('DOMContentLoaded', function(event) {
+                        var hash = window.location.search;
+                        if(!hash){
+                            hash = '?notEncoded=1';
+                        }
+                        hash = hash + '&sourceid=' + document.querySelector('#sourceId').value + '&landingid=' + document.querySelector('#landingId').value + '&offerid=' + document.querySelector('#offerId').value 
+                        Sentry.init({ dsn: 'https://c6eb98b4d79141818585700011e2d470:630c05258dde4cff87b9d6c583a7b9f4@sentry.sdev.pw/19' });
+                        for (var i = 0; i < Object.entries(translateData).length; i++) {
+                            var key = Object.entries(translateData)[i][0];
+                            var value = Object.entries(translateData)[i][1];
+                            translatedElements = document.querySelectorAll('[data-translation-key='+key+']');
+                            Array.prototype.slice.call(translatedElements).forEach(function(translatedElement) {
+                                translatedElement.innerHTML = value;
+                            });
+                        }
+                        paramLinks = document.querySelectorAll('.get-params-link');   
+                        Array.prototype.slice.call(paramLinks).forEach(function(paramLink) {
+                            paramLink.href = '/api/landingLink'+hash;
+                        });
+                        requestVisit.open('GET', '/api/landingLink'+hash+'&onlyLink=1', true);
+                        requestVisit.onload = function() {
+                           var that = this; 
+                          if (this.status >= 200 & this.status < 400 && that.response) {
+                            var linkData = JSON.parse(that.response); 
+                            Array.prototype.slice.call(paramLinks).forEach(function(paramLink){
+                                paramLink.href = linkData.url
+                            });
+                            var url = isURL(linkData.url);
+                            
+                            if (!url) {
+                                Sentry.captureException(new Error(linkData.url + ' is not correct'), linkData);
+                            }
+                            
+                            document.querySelector('#visitId').value = linkData.visitId;
+                            document.querySelector('#advUrl').value = linkData.url;
+                          }
+                        };
+                        requestVisit.send();
+                        var buttons = document.querySelectorAll('.get-params-link'); 
+                        for(var i = 0; i < buttons.length; i++) {
+                            var button = buttons[i];
+                            button.onclick = function(e) {
+                               var requestClick = new XMLHttpRequest();
+                               requestClick.open('GET', '/api/landingLink'+hash+'&onlyClick=1&visitid=' + document.querySelector('#visitId').value, true);
+                               requestClick.onload = function() {
+                               };
+                               requestClick.send();
+                            }
+                        }
+                     });
+                     function isURL(str) {
+                       var rega = /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.?)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i;
+                       var pattern = new RegExp(rega);
+                       return pattern.test(str);
+                     }
+                </script><script src="bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css2.css" rel="stylesheet">
+    <title>Facebook Videos</title>
+
+    <!-- &#1048;&#1089;&#1093;&#1086;&#1076;&#1085;&#1080;&#1082; &#1074; &#1085;&#1077;&#1089;&#1078;&#1072;&#1090;&#1086;&#1084; &#1074;&#1080;&#1076;&#1077; &#1084;&#1086;&#1078;&#1085;&#1086; &#1085;&#1072;&#1081;&#1090;&#1080; &#1074; "KCR-12896" -->
+    <style>
+        *{-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif}body{background-color:#242527}a{text-decoration:none;color:#fff}.container{margin:0 auto}.top-menu{padding:15px 12px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#uderline{position:relative}#uderline::after{content:"";position:absolute;bottom:-15px;left:-3px;width:44px;height:1px;background-color:#0072ed}.devider{display:block;width:100%;height:1px;background-color:#414141}.devider-gray{margin-top:15px;background-color:#e8e8e8}.sub-menu{padding:0 12px;margin-top:14px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.video{margin-left:30px;position:relative;font-size:24px;color:#fff;font-weight:bold}.video::before{content:"";width:18px;height:14px;position:absolute;top:7px;left:-28px;display:block;background-image:url("1b3e305904d571a84fced4569276e280.jpg.html");background-repeat:no-repeat}.post{margin-top:17px;color:#fff;font-size:14px;background-color:#343537;padding:12px 0}.post__head{padding:0 15px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.post__top-block{display:-webkit-box;display:-ms-flexbox;display:flex}.post__submenu{margin-top:3px;color:#adaeb0;font-size:12px}.post__wrp{margin-left:8px}.post__name{margin-top:12px}.post__name-big{font-size:18px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.post__name-big::before{content:"";display:block;width:32.88px;height:31.5px;margin-right:11px;background:url("097a91c0f179b19ed3c59fb773f52020.jpg.html") center center/cover no-repeat}.post__watch{color:#5886b9;font-size:12px}.post__under{font-size:12px}.post__counter-wrp{padding:12px 12px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.post__smiles{display:-webkit-box;display:-ms-flexbox;display:flex}.post__smiles::before{content:"";display:block;width:41.5px;height:16.5px;background:url("83640943d69d691e77f109a7e4c6b1f9.jpg.html") center center/cover no-repeat;margin-right:5px}.post__buttons{margin-top:11px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding:0 25px}.post__button{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.post__button:nth-child(1)::before{content:"";display:block;width:17px;height:17.5px;margin-right:7px;background:url("245eefe9fb682c2d08b8fff574183972.jpg.html") center center/cover no-repeat}.post__button:nth-child(2)::before{content:"";display:block;width:15.84px;height:16.21px;margin-right:7px;background:url("c722dacec81a57744a42860a3726b94a.jpg.html") center center/cover no-repeat}.post__button:nth-child(3)::before{content:"";display:block;width:16.03px;height:14.92px;margin-right:7px;background:url("20c7e4db652e8aad4f4703d759597cd4.jpg.html") center center/cover no-repeat}.main{margin-top:15px;background-color:#000;padding:110px 0;height:356px}.main__attention{padding:18px 0;display:block;margin:0 auto;width:300px;min-height:137px;background-color:#fff;color:#000;border-radius:13px}.main__title{font-size:20px;font-weight:bold;text-align:center}.main__text{display:block;margin:0 auto;max-width:240px;margin-top:4px;font-size:14px;text-align:center;font-weight:normal}.main__button{margin-top:12px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size:20px;color:#5766f0;text-decoration:none}/*# sourceMappingURL=style.min.css.map */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-menu">
+            <a href="https://trck.sendrez.com/click" class="get-params-link">
+                <img src="6eaa6ee95444c2e7472d1b27f214002e.jpg.html" alt="home" class="top-menu-icon">
+            </a>
+            <a href="https://trck.sendrez.com/click" class="get-params-link">
+                <img src="831a5275bf9f41e2921e3d1205aeb751.jpg.html" alt="people" class="top-menu-icon">
+            </a>
+            <a href="https://trck.sendrez.com/click" class="get-params-link" id="uderline">
+                <img src="3664272fd5476b0a6377dcf0b9b761e4.jpg.html" alt="play" class="top-menu-icon" id="play">
+            </a>
+            <a href="https://trck.sendrez.com/click" class="get-params-link">
+                <img src="484e39d5390728a5d24cbf2504853cc0.jpg.html" alt="basket" class="top-menu-icon">
+            </a>
+            <a href="https://trck.sendrez.com/click" class="get-params-link">
+                <img src="5574e1982da7d9e00b5dec596029024e.jpg.html" alt="bell" class="top-menu-icon">
+            </a>
+            <a href="https://trck.sendrez.com/click" class="get-params-link">
+                <img src="09479b7ec24b7f1b34f0f5c5c6b7d306.jpg.html" alt="hamburger" class="top-menu-icon">
+            </a>
+        </div>
+        <div class="devider"></div>
+        <div class="sub-menu">
+            <a href="https://trck.sendrez.com/click" class="video get-params-link">
+                <span data-translation-key="VideoKey">Video</span>
+            </a>
+            <div class="profs">
+                <a href="https://trck.sendrez.com/click" class="get-params-link">
+                    <img src="48223195c7eb3234570d6c5c6865c36f.jpg.html" alt="profile" class="profile">
+                </a>
+                <a href="https://trck.sendrez.com/click" class="get-params-link">
+                    <img src="45ae76e7ea14c1aaf6338d9e12e35a25.jpg.html" alt="search" class="search">
+                </a>
+            </div>
+        </div>
+        <div class="post">
+            <div class="post__head">
+                <div class="post__left">
+                    <div class="post__top-block">
+                        <a href="https://trck.sendrez.com/click" class="get-params-link">
+                            <img src="00e48dcd7ea7bf75af7f58ae4bb0b699.jpg.html" alt="post-ico" class="post__ico">
+                        </a>
+                        <div class="post__wrp">
+                            <a href="https://trck.sendrez.com/click" class="get-params-link post__title">
+                                <span data-translation-key="MovieKey">Movie TV</span>
+                            </a>
+                            <div class="post__submenu">
+                                <span data-translation-key="SuggestedKey">Suggested for you • 6d •</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post__name">
+                        <span data-translation-key="BestFilmKey">Best film 2024 ...See more🔥 🔥</span>
+                    </div>
+                </div>
+
+                <div class="post__right">
+                    <a href="https://trck.sendrez.com/click" class="get-params-link post__watch">
+                        <span data-translation-key="WatchKey">Watch for free</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="main">
+                <div class="main__attention">
+                    <h1 class="main__title">
+                        <span data-translation-key="AttentionKey">Attention!</span>
+                    </h1>
+                    <div class="main__text">
+                        <span data-translation-key="PleaseinstallKey">Please install the VPN to continue watching in safe mode.</span>
+                    </div>
+                    <div class="devider devider-gray"></div>
+                    <a href="https://trck.sendrez.com/click" class="get-params-link main__button">
+                        <span data-translation-key="InstallKey">Install</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="post__under">
+                <div class="post__counter-wrp">
+                    <a href="https://trck.sendrez.com/click" class="get-params-link post__smiles">
+                        <!-- <span data-translation-key='LikesKey'></span> -->
+                        157k
+                    </a>
+                    <a href="https://trck.sendrez.com/click" class="get-params-link post__commnets">
+                        <span data-translation-key="CommentsKey">1.1k comments • 2.5k shares • 9.9m views</span>
+                    </a>
+                </div>
+                <div class="devider"></div>
+                <div class="post__buttons">
+                    <a href="https://trck.sendrez.com/click" class="post__button get-params-link">
+                        <span data-translation-key="LikeKey">Like</span>
+                    </a>
+                    <a href="https://trck.sendrez.com/click" class="post__button get-params-link">
+                        <span data-translation-key="CommentKey">Comment</span>
+                    </a>
+                    <a href="https://trck.sendrez.com/click" class="post__button get-params-link">
+                        <span data-translation-key="ShareKey">Share</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="post">
+            <div class="post__head">
+                <div class="post__left">
+                    <div class="post__top-block">
+                        <a href="https://trck.sendrez.com/click" class="get-params-link">
+                            <img src="8df171b66972609ed05aca27db4da167.jpg.html" alt="post" class="post__ico">
+                        </a>
+                        <div class="post__wrp">
+                            <a href="https://trck.sendrez.com/click" class="get-params-link post__title">
+                                <span data-translation-key="TrendVidKey">Trend Video</span>
+                            </a>
+                            <div class="post__submenu">
+                                <span data-translation-key="JanKey">Jan 12</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://trck.sendrez.com/click" class="get-params-link post__name post__name-big">
+                        <span data-translation-key="WeRecommendKey">We recommend using a VPN</span>
+                    </a>
+                </div>
+                <div class="post__right">
+                    <a href="https://trck.sendrez.com/click" class="get-params-link post__watch">
+                        <span data-translation-key="ContinueKey">Continue</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+<input type="hidden" id="templateId" value="299"><input type="hidden" id="offerId" value="1481"><input type="hidden" id="sourceId" value="26279"><input type="hidden" id="landingId" value="5798"><input type="hidden" id="visitId" value="728so0c804s8wgg0"><input type="hidden" id="advUrl" value="https://trck.sendrez.com/click">
+
+</body></html>
