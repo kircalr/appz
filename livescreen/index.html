@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en" data-scrapbook-source="https://trck.hapecg.com/click" data-scrapbook-create="20220914112633140"
+  data-scrapbook-title="Attention">
+
+<head>
+  <base href="">
+  <script src="polyfill.js"></script>
+  <script>
+    var templateId = 186;
+    var userLang = navigator.language || navigator.userLanguage;
+    var request = new XMLHttpRequest();
+    var requestVisit = new XMLHttpRequest();
+    request.open('GET', '/landingStatic/translation/template/' + templateId + '/lang/' + userLang + '.class', false);
+    request.onload = function () {
+      var that = this;
+      window.trans = {};
+      if (that.status >= 200 & that.status < 400 && that.response) {
+        translateData = JSON.parse(that.response);
+        Object.entries(translateData).forEach(function (translate) {
+          var key = translate[0];
+          var value = translate[1];
+          window.trans[key] = value;
+        });
+      }
+    };
+    request.send();
+    window.addEventListener('DOMContentLoaded', function (event) {
+      var hash = window.location.search;
+      if (!hash) {
+        hash = '?notEncoded=1';
+      }
+      hash = hash + '&sourceid=' + document.querySelector('#sourceId').value + '&landingid=' + document.querySelector('#landingId').value + '&offerid=' + document.querySelector('#offerId').value
+      Sentry.init({ dsn: 'https://c6eb98b4d79141818585700011e2d470:630c05258dde4cff87b9d6c583a7b9f4@sentry.sdev.pw/19' });
+      for (var i = 0; i < Object.entries(translateData).length; i++) {
+        var key = Object.entries(translateData)[i][0];
+        var value = Object.entries(translateData)[i][1];
+        translatedElements = document.querySelectorAll('[data-translation-key=' + key + ']');
+        Array.prototype.slice.call(translatedElements).forEach(function (translatedElement) {
+          translatedElement.innerHTML = value;
+        });
+      }
+      paramLinks = document.querySelectorAll('.get-params-link');
+      Array.prototype.slice.call(paramLinks).forEach(function (paramLink) {
+        paramLink.href = '/api/landingLink' + hash;
+      });
+      requestVisit.open('GET', '/api/landingLink' + hash + '&onlyLink=1', true);
+      requestVisit.onload = function () {
+        var that = this;
+        if (this.status >= 200 & this.status < 400 && that.response) {
+          var linkData = JSON.parse(that.response);
+          Array.prototype.slice.call(paramLinks).forEach(function (paramLink) {
+            paramLink.href = linkData.url
+          });
+          var url = isURL(linkData.url);
+
+          if (!url) {
+            Sentry.captureException(new Error(linkData.url + ' is not correct'), linkData);
+          }
+
+          document.querySelector('#visitId').value = linkData.visitId;
+          document.querySelector('#advUrl').value = linkData.url;
+        }
+      };
+      requestVisit.send();
+      var buttons = document.querySelectorAll('.get-params-link');
+      for (var i = 0; i < buttons.length; i++) {
+        var button = buttons[i];
+        button.onclick = function (e) {
+          var requestClick = new XMLHttpRequest();
+          requestClick.open('GET', '/api/landingLink' + hash + '&onlyClick=1&visitid=' + document.querySelector('#visitId').value, true);
+          requestClick.onload = function () {
+          };
+          requestClick.send();
+        }
+      }
+    });
+    function isURL(str) {
+      var rega = /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.?)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i;
+      var pattern = new RegExp(rega);
+      return pattern.test(str);
+    }
+  </script>
+  <script src="bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-translate="a1">Attention</title>
+  <!-- <link href="css.css" rel="stylesheet"> -->
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: "Open Sans", sans-serif;
+      position: relative;
+      background: #1e222b;
+    }
+
+    a {
+      text-decoration: none;
+      position: relative;
+    }
+
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      color: #3e3e3e;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+
+    .wrapper__player {
+      background: #000;
+      padding: 5px;
+      position: relative;
+    }
+
+    .offerText {
+      font-size: 1.2rem;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .offerText p {
+      margin-bottom: 5px;
+    }
+
+    .offerText p:last-child {
+      margin-bottom: 0;
+    }
+
+    .offerText b {
+      font-weight: 700;
+    }
+
+    .bg {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: url("5e6823c121a386d3fa9cf893fdaa74c2.jpg.html");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+      -webkit-animation: show 1s linear forwards;
+      animation: show 1s linear forwards;
+    }
+
+    .bg_mask {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      opacity: 0.4;
+      -webkit-animation: show 1s steps(1, end) forwards;
+      animation: show 1s steps(1, end) forwards;
+    }
+
+    @-webkit-keyframes show {
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes show {
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .logo {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+    }
+
+    .logo img {
+      width: 110px;
+      opacity: 0.4;
+    }
+
+    .loaderPic {
+      width: 90px;
+    }
+
+    .loaderPic img {
+      width: 100%;
+      display: block;
+    }
+
+    .playerScreen {
+      position: relative;
+      height: 55vh;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+
+    .playerNavigation {
+      position: relative;
+    }
+
+    .progressLine {
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.3);
+      margin-bottom: 3px;
+    }
+
+    .iconsWrapper {
+      width: 100%;
+      padding: 5px 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+
+    .icon {
+      fill: #fff;
+      height: 22px;
+    }
+
+    .picIcon {
+      height: 18px;
+    }
+
+    .leftSide,
+    .rightSide {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .leftSide .icon {
+      margin-right: 10px;
+    }
+
+    .rightSide .icon {
+      margin-left: 10px;
+    }
+
+    .time {
+      font-size: 0.8rem;
+      line-height: 1;
+      color: #fff;
+      display: inline-block;
+    }
+
+    .modal {
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      color: #333333;
+      text-align: center;
+      background: #fff;
+      width: 500px;
+    }
+
+    .modal__top {
+      padding: 17px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .modal__top h1 {
+      text-transform: capitalize;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .button {
+      width: 100%;
+      color: #2289fb;
+      font-size: 1.3rem;
+      font-weight: 400;
+      border-top: solid 1px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      padding: 13px 10px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: rgba(225, 225, 225, 0.5);
+    }
+
+    .button:last-child:hover {
+      border-radius: 0 0 10px 10px;
+    }
+
+    /*************** media queries start ***********/
+    @media only screen and (min-width: 1200px) {
+      .wrapper__player {
+        width: 1140px;
+        margin: 30px auto 0;
+      }
+    }
+
+    @media only screen and (max-width: 1200px) {
+      .wrapper__player {
+        width: 960px;
+        margin: 30px auto 0;
+      }
+
+      .modal {
+        width: 430px;
+      }
+    }
+
+    @media only screen and (max-width: 992px) {
+      .wrapper__player {
+        width: 720px;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      .wrapper__player {
+        width: 100%;
+      }
+
+      .playerScreen {
+        height: 35vh;
+      }
+
+      .modal {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .leftSide .icon {
+        margin-right: 5px;
+      }
+
+      .rightSide .icon {
+        margin-left: 5px;
+      }
+
+      .modal .offerText {
+        font-size: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 440px),
+    screen and (max-width: 840px) and (max-height: 440px) and (orientation: landscape) {
+      .logo {
+        top: 12px;
+        left: 15px;
+      }
+
+      .logo img {
+        width: 80px;
+      }
+
+      .loaderPic {
+        width: 45px;
+      }
+    }
+
+    @media only screen and (max-width: 320px) {
+      html {
+        font-size: 13px;
+      }
+
+      button {
+        padding: 10px;
+      }
+
+      .wrapper__player {
+        margin-top: 15px;
+      }
+
+      .loaderPic {
+        width: 70px;
+      }
+
+      .icon {
+        height: 20px;
+      }
+
+      .picIcon {
+        height: 16px;
+      }
+    }
+
+    @media screen and (max-width: 768px) and (orientation: landscape) {
+      .wrapper {
+        height: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+
+      .wrapper__player {
+        width: 100%;
+        height: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        margin-top: 0;
+      }
+
+      .playerScreen {
+        height: 100%;
+      }
+    }
+
+    @media screen and (max-width: 480px) and (orientation: landscape) {
+      html {
+        font-size: 14px;
+      }
+    }
+
+    /*************** media queries end ***********/
+  </style>
+
+  <!--  <script src="back3.js"></script>-->
+  <!--  <script type="text/javascript">-->
+
+  <!--    bajb_backdetect.OnBack = function()-->
+  <!--    {-->
+  <!--      window.history.back=function() {-->
+  <!--        document.location='#'-->
+  <!--      }-->
+  <!--    }-->
+
+  <!--  </script>-->
+  <script src="raven.min.js" crossorigin="anonymous"></script>
+  <script>
+    Raven.config(
+      "https://c6eb98b4d79141818585700011e2d470:630c05258dde4cff87b9d6c583a7b9f4@sentry.sdev.pw/19",
+      {
+        ignoreErrors: [
+          "is not correct",
+        ],
+        allowSecretKey: true,
+      }
+    ).install();
+  </script>
+</head>
+
+<body onload="translate()">
+  <div class="wrapper">
+    <div class="wrapper__player">
+      <div class="bg"></div>
+      <div class="bg_mask"></div>
+      <div class="playerScreen">
+        <div class="logo">
+          <img src="90035334a402f272d5328f2c527ffecf.jpg.html" alt="">
+        </div>
+        <!-- <div class="loaderPic" style="display: none;">
+      <img src="loading.svg" alt="">
+      </div> -->
+        <a href="https://trck.hapecg.com/click" class="get-params-link c_src">
+          <div class="modal" style="display: block">
+            <div class="modal__top">
+              <h1 data-translate="a2">Attention</h1>
+              <p data-translate="a3"> VPN App Is recommended to continue watching in safe mode</p>
+            </div>
+            <p class="button" data-translate="a4">Install</p>
+            <p class="button" data-translate="a5">Details</p>
+          </div>
+        </a>
+      </div>
+      <a href="https://trck.hapecg.com/click" class="get-params-link">
+        <div class="playerNavigation">
+          <div class="progressLine"></div>
+          <div class="iconsWrapper">
+            <div class="leftSide">
+              <div class="icon playIcon">
+                <img src="9c834d1f223379719631e815873584e0.jpg.html" viewbox="0 0 240 240" alt="">
+              </div>
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon playIcon" viewBox="0 0 240 240">
+            <path d="M62.8,199.5c-1,0.8-2.4,0.6-3.3-0.4c-0.4-0.5-0.6-1.1-0.5-1.8V42.6c-0.2-1.3,0.7-2.4,1.9-2.6c0.7-0.1,1.3,0.1,1.9,0.4l154.7,77.7c2.1,1.1,2.1,2.8,0,3.8L62.8,199.5z"></path>
+            </svg> -->
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon volumeIcon" viewBox="0 0 240 240"><path d="M116.5,42.8v154.4c0,2.8-1.7,3.6-3.8,1.7l-54.1-48H29c-2.8,0-5.2-2.3-5.2-5.2V94.3c0-2.8,2.3-5.2,5.2-5.2h29.6l54.1-48C114.8,39.2,116.5,39.9,116.5,42.8z"></path><path d="M136.2,160v-20c11.1,0,20-8.9,20-20s-8.9-20-20-20V80c22.1,0,40,17.9,40,40S158.3,160,136.2,160z"></path><path d="M216.2,120c0-44.2-35.8-80-80-80v20c33.1,0,60,26.9,60,60s-26.9,60-60,60v20C180.4,199.9,216.1,164.1,216.2,120z"></path></svg> -->
+              <div class="icon icon volumeIcon">
+                <img src="81385b8f9516d5aee1b48675fbabe958.jpg.html" viewbox="0 0 240 240" alt="">
+              </div>
+              <div class="time">00:00 / 1:37:43</div>
+            </div>
+            <div class="rightSide">
+              <!-- <svg class="icon ccIcon" viewBox="0 0 240 240" focusable="false">
+            <path d="M215,40H25c-2.7,0-5,2.2-5,5v150c0,2.7,2.2,5,5,5h190c2.7,0,5-2.2,5-5V45C220,42.2,217.8,40,215,40z M108.1,137.7c0.7-0.7,1.5-1.5,2.4-2.3l6.6,7.8c-2.2,2.4-5,4.4-8,5.8c-8,3.5-17.3,2.4-24.3-2.9c-3.9-3.6-5.9-8.7-5.5-14v-25.6c0-2.7,0.5-5.3,1.5-7.8c0.9-2.2,2.4-4.3,4.2-5.9c5.7-4.5,13.2-6.2,20.3-4.6c3.3,0.5,6.3,2,8.7,4.3c1.3,1.3,2.5,2.6,3.5,4.2l-7.1,6.9c-2.4-3.7-6.5-5.9-10.9-5.9c-2.4-0.2-4.8,0.7-6.6,2.3c-1.7,1.7-2.5,4.1-2.4,6.5v25.6C90.4,141.7,102,143.5,108.1,137.7z M152.9,137.7c0.7-0.7,1.5-1.5,2.4-2.3l6.6,7.8c-2.2,2.4-5,4.4-8,5.8c-8,3.5-17.3,2.4-24.3-2.9c-3.9-3.6-5.9-8.7-5.5-14v-25.6c0-2.7,0.5-5.3,1.5-7.8c0.9-2.2,2.4-4.3,4.2-5.9c5.7-4.5,13.2-6.2,20.3-4.6c3.3,0.5,6.3,2,8.7,4.3c1.3,1.3,2.5,2.6,3.5,4.2l-7.1,6.9c-2.4-3.7-6.5-5.9-10.9-5.9c-2.4-0.2-4.8,0.7-6.6,2.3c-1.7,1.7-2.5,4.1-2.4,6.5v25.6C135.2,141.7,146.8,143.5,152.9,137.7z"></path>
+            </svg>
+            <svg viewBox="0 0 268.765 268.765" xml:space="preserve" class="icon settingsIcon">
+            <g id="Settings">
+            <g>
+            <path style="fill-rule:evenodd;clip-rule:evenodd;" d="M267.92,119.461c-0.425-3.778-4.83-6.617-8.639-6.617    c-12.315,0-23.243-7.231-27.826-18.414c-4.682-11.454-1.663-24.812,7.515-33.231c2.889-2.641,3.24-7.062,0.817-10.133    c-6.303-8.004-13.467-15.234-21.289-21.5c-3.063-2.458-7.557-2.116-10.213,0.825c-8.01,8.871-22.398,12.168-33.516,7.529    c-11.57-4.867-18.866-16.591-18.152-29.176c0.235-3.953-2.654-7.39-6.595-7.849c-10.038-1.161-20.164-1.197-30.232-0.08    c-3.896,0.43-6.785,3.786-6.654,7.689c0.438,12.461-6.946,23.98-18.401,28.672c-10.985,4.487-25.272,1.218-33.266-7.574    c-2.642-2.896-7.063-3.252-10.141-0.853c-8.054,6.319-15.379,13.555-21.74,21.493c-2.481,3.086-2.116,7.559,0.802,10.214    c9.353,8.47,12.373,21.944,7.514,33.53c-4.639,11.046-16.109,18.165-29.24,18.165c-4.261-0.137-7.296,2.723-7.762,6.597    c-1.182,10.096-1.196,20.383-0.058,30.561c0.422,3.794,4.961,6.608,8.812,6.608c11.702-0.299,22.937,6.946,27.65,18.415    c4.698,11.454,1.678,24.804-7.514,33.23c-2.875,2.641-3.24,7.055-0.817,10.126c6.244,7.953,13.409,15.19,21.259,21.508    c3.079,2.481,7.559,2.131,10.228-0.81c8.04-8.893,22.427-12.184,33.501-7.536c11.599,4.852,18.895,16.575,18.181,29.167    c-0.233,3.955,2.67,7.398,6.595,7.85c5.135,0.599,10.301,0.898,15.481,0.898c4.917,0,9.835-0.27,14.752-0.817    c3.897-0.43,6.784-3.786,6.653-7.696c-0.451-12.454,6.946-23.973,18.386-28.657c11.059-4.517,25.286-1.211,33.281,7.572    c2.657,2.89,7.047,3.239,10.142,0.848c8.039-6.304,15.349-13.534,21.74-21.494c2.48-3.079,2.13-7.559-0.803-10.213    c-9.353-8.47-12.388-21.946-7.529-33.524c4.568-10.899,15.612-18.217,27.491-18.217l1.662,0.043    c3.853,0.313,7.398-2.655,7.865-6.588C269.044,139.917,269.058,129.639,267.92,119.461z M134.595,179.491    c-24.718,0-44.824-20.106-44.824-44.824c0-24.717,20.106-44.824,44.824-44.824c24.717,0,44.823,20.107,44.823,44.824    C179.418,159.385,159.312,179.491,134.595,179.491z" fill="#FFFFFF"></path>
+            </g>
+            </g>
+            </svg> -->
+              <div class="icon ccIcon">
+                <img src="9aa3f5efd84fcc3196892582f471ab5d.jpg.html" viewbox="0 0 240 240" alt="">
+              </div>
+              <div class="icon settingsIcon">
+                <img src="489944967ac89a4afb328534f02c98c9.jpg.html" viewbox="0 0 240 240" alt="">
+              </div>
+              <div class="icon fullscreenIcon">
+                <img src="6ecc327e6fc3570f78481813e451e637.jpg.html" viewbox="0 0 240 240" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <input type="hidden" id="templateId" value="186"><input type="hidden" id="offerId" value="1333"><input type="hidden"
+    id="sourceId" value="26279"><input type="hidden" id="landingId" value="4821"><input type="hidden" id="visitId"
+    value="ckcck880k008oo8g"><input type="hidden" id="advUrl" value="https://trck.hapecg.com/click">
+
+
+  <script>
+
+
+    var translation = {
+      source: {
+        a1: "Attention!",
+        a2: "Attention!",
+        a3: "VPN App Is recommended to continue watching in safe mode",
+        a4: "Install",
+        a5: "Details",
+      },
+      en: {
+        a1: "Attention!",
+        a2: "Attention!",
+        a3: "Please Install the VPN App to continue watching in safe mode.",
+        a4: "Install", a5: "Details",
+      },
+      de: {
+        a1: "Achtung!",
+        a2: "Achtung!",
+        a3: "Bitte installieren Sie die VPN-App, um die Wiedergabe im abgesicherten Modus fortzusetzen.",
+        a4: "Installieren", a5: "Einzelheiten",
+      },
+      fr: {
+        a1: "Attention!",
+        a2: "Attention!",
+        a3: "Veuillez installer l'application VPN pour continuer à regarder en mode sans échec.",
+        a4: "Installer", a5: "Détails",
+      },
+      es: {
+        a1: "¡Atención!",
+        a2: "¡Atención!",
+        a3: "Instala la aplicación VPN para continuar viendo en modo seguro",
+        a4: "Instalar", a5: "Detalles",
+      },
+      it: {
+        a1: "Attenzione!",
+        a2: "Attenzione!",
+        a3: "Installa l'app VPN per continuare a guardare in modalità provvisoria.",
+        a4: "Installa", a5: "Dettagli",
+      },
+      pt: {
+        a1: "Atenção!",
+        a2: "Atenção!",
+        a3: "Instale o aplicativo VPN para continuar assistindo no modo de segurança.",
+        a4: "Instalar", a5: "Detalhes",
+      },
+      sv: {
+        a1: "Obs!",
+        a2: "Obs!",
+        a3: "Vänligen installera VPN-appen för att fortsätta titta i säkert läge.",
+        a4: "Installera", a5: "Detaljer",
+      },
+      no: {
+        a1: "Oppmerksomhet!",
+        a2: "Oppmerksomhet!",
+        a3: "Vennligst installer VPN-appen for å fortsette å se i sikker modus.",
+        a4: "Installer", a5: "Detaljer",
+      },
+      nl: {
+        a1: "Let op!",
+        a2: "Let op!",
+        a3: "Installeer de VPN-app om verder te kijken in de veilige modus.",
+        a4: "Installeren", a5: "Details",
+      },
+      da: {
+        a1: "Opmærksomhed!",
+        a2: "Opmærksomhed!",
+        a3: "Installer venligst VPN-appen for at fortsætte med at se i sikker tilstand.",
+        a4: "Installer", a5: "Detaljer",
+      },
+      cs: {
+        a1: "Pozor!",
+        a2: "Pozor!",
+        a3: "Nainstalujte si prosím aplikaci VPN, abyste mohli pokračovat ve sledování v nouzovém režimu.",
+        a4: "Instalovat", a5: "Podrobnosti",
+      },
+      fi: {
+        a1: "Huomio!",
+        a2: "Huomio!",
+        a3: "Asenna VPN-sovellus jatkaaksesi katselua vikasietotilassa.",
+        a4: "Asenna", a5: "Yksityiskohdat",
+      },
+      el: {
+        a1: "Προσοχή!",
+        a2: "Προσοχή!",
+        a3: "Εγκαταστήστε την εφαρμογή VPN για να συνεχίσετε την παρακολούθηση σε ασφαλή λειτουργία.",
+        a4: "Εγκατάσταση", a5: "Λεπτομέριες",
+      },
+      hu: {
+        a1: "Figyelem!",
+        a2: "Figyelem!",
+        a3: "Telepítse a VPN alkalmazást a csökkentett módban való nézéshez.",
+        a4: "Telepítés", a5: "Részletek",
+      },
+      ro: {
+        a1: "Atenție!",
+        a2: "Atenție!",
+        a3: "Vă rugăm să instalați aplicația VPN pentru a continua vizionarea în modul sigur.",
+        a4: "Instalare", a5: "Detalii",
+      },
+      hr: {
+        a1: "Pažnja!",
+        a2: "Pažnja!",
+        a3: "Instalirajte VPN aplikaciju za nastavak gledanja u sigurnom načinu rada.",
+        a4: "Instaliraj", a5: "pojedinosti",
+      },
+      lt: {
+        a1: "Dėmesio!",
+        a2: "Dėmesio!",
+        a3: "Įdiekite VPN programą, kad galėtumėte toliau žiūrėti saugiuoju režimu.",
+        a4: "Įdiegti", a5: "Detalės",
+      },
+      lv: {
+        a1: "Uzmanību!",
+        a2: "Uzmanību!",
+        a3: "Lūdzu, instalējiet VPN lietotni, lai turpinātu skatīties drošajā režīmā.",
+        a4: "Instalēt", a5: "Sīkāka informācija",
+      },
+      sr: {
+        a1: "Пажња!",
+        a2: "Пажња!",
+        a3: "Инсталирајте ВПН апликацију да наставите да гледате у безбедном режиму.",
+        a4: "Инсталирај", a5: "Детаљи",
+      },
+      sk: {
+        a1: "Pozor!",
+        a2: "Pozor!",
+        a3: "Nainštalujte si aplikáciu VPN, aby ste mohli pokračovať v pozeraní v núdzovom režime.",
+        a4: "Inštalovať", a5: "Podrobnosti",
+      },
+      sl: {
+        a1: "Pozor!",
+        a2: "Pozor!",
+        a3: "Namestite aplikacijo VPN za nadaljevanje gledanja v varnem načinu.",
+        a4: "Namesti", a5: "Podrobnosti",
+      },
+      be: {
+        a1: "Увага!",
+        a2: "Увага!",
+        a3: "Калі ласка, усталюйце праграму VPN, каб працягнуць прагляд у бяспечным рэжыме.",
+        a4: "Усталяваць", a5: "Дэталі",
+      },
+      bg: {
+        a1: "Внимание!",
+        a2: "Внимание!",
+        a3: "Моля, инсталирайте VPN приложение, за да продължите да гледате в безопасен режим.",
+        a4: "Инсталиране", a5: "Подробности",
+      },
+      pl: {
+        a1: "Uwaga!",
+        a2: "Uwaga!",
+        a3: "Zainstaluj aplikację VPN, aby kontynuować oglądanie w trybie awaryjnym.",
+        a4: "Zainstaluj", a5: "Detale",
+      },
+      uk: {
+        a1: "Увага!",
+        a2: "Увага!",
+        a3: "Будь ласка, установіть додаток VPN, щоб продовжити перегляд у безпечному режимі.",
+        a4: "Встановити", a5: "Подробиці",
+      },
+      zh: {
+        a1: "注意！",
+        a2: "注意！",
+        a3: "请安装 VPN 应用程序以在安全模式下继续观看。",
+        a4: "安装", a5: "细节",
+      },
+      ko: {
+        a1: "주의!",
+        a2: "주의!",
+        a3: "안전 모드에서 계속 시청하려면 VPN 앱을 설치하세요.",
+        a4: "설치", a5: "세부",
+      },
+      ja: {
+        a1: "注意!",
+        a2: "注意!",
+        a3: "セーフ モードで視聴を続けるには、VPN アプリをインストールしてください。",
+        a4: "インストール", a5: "詳細",
+      },
+      id: {
+        a1: "Perhatian!",
+        a2: "Perhatian!",
+        a3: "Silakan instal aplikasi VPN untuk terus menonton dalam mode aman.",
+        a4: "Instal", a5: "Detail",
+      },
+      vi: {
+        a1: "Chú ý!",
+        a2: "Chú ý!",
+        a3: "Vui lòng cài đặt ứng dụng VPN để tiếp tục xem ở chế độ an toàn.",
+        a4: "Cài đặt", a5: "Chi tiết",
+      },
+      ms: {
+        a1: "Perhatian!",
+        a2: "Perhatian!",
+        a3: "Sila pasang apl VPN untuk terus menonton dalam mod selamat.",
+        a4: "Pasang", a5: "Butiran",
+      },
+      hi: {
+        a1: "ध्यान!",
+        a2: "ध्यान!",
+        a3: "सुरक्षित मोड में देखना जारी रखने के लिए कृपया VPN ऐप इंस्टॉल करें।",
+        a4: "इंस्टॉल करें", a5: "विवरण",
+      },
+      ar: {
+        a1: "انتباه!",
+        a2: "انتباه!",
+        a3: "الرجاء تثبيت تطبيق VPN لمتابعة المشاهدة في الوضع الآمن.",
+        a4: "تثبيت", a5: "تفاصيل",
+      },
+      fil: {
+        a1: "Atensyon!",
+        a2: "Atensyon!",
+        a3: "Paki-install ang VPN app para magpatuloy sa panonood sa safe mode.",
+        a4: "I-install", a5: "Mga Detalye",
+      },
+      tr: {
+        a1: "Dikkat!",
+        a2: "Dikkat!",
+        a3: "Güvenli modda izlemeye devam etmek için lütfen VPN uygulamasını yükleyin.",
+        a4: "Yükle", a5: "Detaylar",
+      },
+      ur: {
+        a1: "توجہ!",
+        a2: "توجہ!",
+        a3: "محفوظ موڈ میں دیکھنا جاری رکھنے کے لیے براہ کرم VPN ایپ انسٹال کریں۔",
+        a4: "انسٹال کریں", a5: "تفصیلات",
+      },
+      th: {
+        a1: "เรียน!",
+        a2: "เรียน!",
+        a3: "โปรดติดตั้งแอป VPN เพื่อรับชมต่อในเซฟโหมด",
+        a4: "ติดตั้ง", a5: "รายละเอียด",
+      },
+      bn: {
+        a1: "মনোযোগ!",
+        a2: "মনোযোগ!",
+        a3: "নিরাপদ মোডে দেখা চালিয়ে যেতে দয়া করে VPN অ্যাপ ইনস্টল করুন।",
+        a4: "ইনস্টল করুন", a5: "বিস্তারিত",
+      },
+      he: {
+        a1: "שים לב!",
+        a2: "שים לב!",
+        a3: "אנא התקן את אפליקציית VPN כדי להמשיך לצפות במצב בטוח.",
+        a4: "התקן", a5: "פרטים",
+      },
+
+    };
+
+    function replace_text(lang) {
+      var elements = document.getElementsByClassName("translatable");
+      var elements = document.querySelectorAll("[data-translate]");
+      for (var i = 0; i < elements.length; i++) {
+        var text = elements[i].getAttribute("data-translate");
+        var translatedText = translation[lang][text];
+        if (translatedText) {
+          elements[i].innerHTML = translatedText;
+        } else {
+          console.log("Translation not found for: " + text);
+        }
+      }
+    }
+
+    function translation_available(lang) {
+      if (translation[lang]) {
+        return lang;
+      } else {
+        console.log("Translation not found for language: " + lang);
+        return "source";
+      }
+    }
+
+    function detect_language() {
+      var language = navigator.languages && navigator.languages[0] || navigator.language || navigator.userLanguage;
+      if (language.length > 3) {
+        language = language[0] + language[1];
+      }
+      if (['ar', 'he', 'fa', 'ur'].indexOf(language) >= 0) {
+        document.documentElement.setAttribute('dir', 'rtl');
+      }
+      return translation_available(language);
+    }
+
+    function translate() {
+      var language = detect_language();
+      replace_text(language);
+    }
+
+    // Call the translate function when the page is ready
+    document.addEventListener("DOMContentLoaded", function () {
+      translate();
+    });
+
+  </script>
+
+
+
+</body>
+
+</html>
