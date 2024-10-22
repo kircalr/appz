@@ -1,0 +1,323 @@
+/*=============== BUTTONS =====================*/
+
+@charset "UTF-8";
+:root{
+  --p-btn-border: #cacaca;
+  --p-btn-def-bg: #fff;
+  --p-btn-def-col: #333230;
+  --p-btn-dir-col: #242424;
+  --p-btn-scope-unactive: #212136;
+  --p-btn-scope-action: #212136;
+}
+
+.p-btn {
+  background: var(--p-btn-def-bg);
+  border: 1px solid var(--p-btn-border);
+  border-radius: .3rem;
+  color: var(--p-btn-def-col);
+  display: inline-block;
+  font-family: -apple-system, "Inter", sans-serif;
+  font-size: 1.1rem;
+  margin: .7rem;
+  padding: .4rem 1.2rem;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0px 2px 3px -2px rgba(0,0,0,.3);
+  user-select: none;
+  cursor: pointer;
+}
+.p-btn:focus{
+  outline: 2px solid #64baff;
+}
+.p-btn.p-btn-block{
+  display: block;
+}
+.p-btn.p-btn-sm {
+  padding: .3rem 1.1rem;
+  font-size: 1rem;
+}
+.p-btn.p-btn-md {
+  padding: .8rem 2.4rem;
+  font-size: 1.6rem;
+}
+.p-btn.p-btn-lg {
+  padding: 1.2rem 2.8rem;
+  font-size: 1.8rem;
+}
+.p-btn-mob{
+  padding: 10px 40px;
+  background: #227bec;
+  color: #fff;
+  border: 0;
+  box-shadow: inset 0 1px 1px rgb(255 255 255 / 41%), 0px 2px 3px -2px rgba(0,0,0,.3);
+}
+.p-btn[disabled],
+.p-btn:disabled,
+.p-btn-disabled{
+  cursor: not-allowed;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.p-prim-col {
+  background: linear-gradient(to bottom, #4fc5fa 0%, #0f75f5 100%);
+  background-size: 100%;
+  border:0;
+  box-shadow: inset 0 1px 1px rgb(255 255 255 / 41%), 0px 2px 3px -2px rgba(0,0,0,.3);
+  color: #fff;
+}
+
+.p-btn.p-prim-col:active {
+  background: #0f75f5;
+}
+
+.p-btn-more::after {
+  content: "...";
+}
+
+.p-btn-round {
+  border: 0;
+  border-radius: 50px;
+  box-shadow: inset 0 1px 1px rgb(255 255 255 / 41%);
+  padding: 10px 30px;
+}
+
+.p-btn-icon {
+  align-items: center;
+  background: var(--p-btn-def-bg);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  color: #0f75f5;
+  display: inline-flex;
+  font-weight: 900;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  user-select: none;
+  vertical-align: bottom;
+}
+
+.p-btn-icon.p-btn-icon-no-border{
+  border: 0px;
+}
+
+.p-btn-scope {
+  background: #8e8e8e;
+  color: #fff;
+  margin: 5px;
+  padding: 2px 20px;
+  box-shadow: none;
+}
+.p-btn-scope-unactive {
+  background: transparent;
+  border-color: transparent;
+  color: var(--p-btn-scope-unactive);
+  transition: border-color 0.2s;
+}
+.p-btn-scope-unactive:hover {
+  border-color: var(--p-btn-border);
+}
+
+.p-btn-scope-outline {
+  background: transparent;
+  color: var(--p-btn-scope-action);
+  box-shadow: none;
+}
+
+.p-btn-outline {
+  background: none;
+  border-color: currentColor;
+  box-shadow: none;
+}
+
+.p-btn-outline-dash {
+  background: none;
+  border-color: currentColor;
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.p-btn-direction {
+  color: var(--p-btn-dir-col);
+  padding: 5px;
+  text-decoration: none;
+  user-select: none;
+}
+
+.p-btn-direction.p-btn-d-back::before {
+  content: "❬";
+}
+
+.p-btn-direction.p-btn-d-next::after {
+  content: "❭";
+}
+
+/*=============== MODALS =====================*/
+
+:root {
+	--font: -apple-system, "Inter", sans-serif;
+	--primary-col-ac: #0f75f5;
+	--p-modal-bg: rgba(255, 255, 255, 0.8);
+	--p-modal-bd-color: rgba(0,0,0,.1);
+	--p-modal-fallback-color: rgba(255,255,255,.95);
+	--p-modal-color: #1d1d1f;
+  }
+  
+  .p-modal-opened {
+	overflow: hidden;
+  }
+  
+  .p-modal-background {
+	background: rgba(0, 0, 0, 0.7);
+	height: 100vh;
+	left: 0;
+	opacity: 0;
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	transition: opacity 0.3s;
+	width: 100vw;
+	z-index: 5;
+  }
+  
+  .p-modal {
+  cursor: pointer;
+	background: var(--p-modal-bg);
+	color: var(--p-modal-color);
+	border-radius: 20px;
+	top: calc(50% - 20vh);
+	bottom: unset;
+	box-shadow: 0 10px 20px -15px black;
+	font-family: var(--font);
+	left: calc(50% - 20vw);
+	opacity: 0;
+	overflow: hidden;
+	pointer-events: none;
+	position: fixed;
+	text-align: center;
+	transform: scale(1.5);
+	transition: opacity 0.3s, transform 0.3s;
+	transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+	width: 40vw;
+	z-index: 9;
+  }
+  
+  .p-modal.active {
+	opacity: 1;
+	pointer-events: auto;
+	transform: scale(1);
+  background: #F2F2F2;
+backdrop-filter: blur(11px);
+  }
+  
+  .p-modal-button-container {
+	border-radius: 20px;
+	display: flex;
+  }
+  
+  .p-modal-button-container > a {
+	border-top: 1px solid var(--p-modal-bd-color);
+	color: var(--primary-col-ac);
+	padding: 30px 0%;
+	text-decoration: none;
+	width: 100%;
+  }
+  
+  .p-modal-button-container > a:not(:first-child){
+	border-left: 1px solid var(--p-modal-bd-color);
+  }
+  
+  .nowactive {
+	opacity: 1;
+	pointer-events: auto;
+  }
+  
+  .p-modal p {
+	padding: 0% 5%;
+  }
+  
+  @supports not (backdrop-filter: blur(5px)) {
+	.p-modal {
+	  background: var(--p-modal-fallback-color);
+	}
+  }
+  @media (max-width: 568px) {
+	.p-modal {
+	  left: 15%;
+	  width: 70vw;
+	}
+  
+	.p-modal p {
+	  font-size: 15px;
+	  padding: 0% 10%;
+	}
+  
+	.p-modal-button-container {
+	  display: block;
+	}
+  
+	.p-modal-button-container > a {
+	  border-left: 0;
+	  display: block;
+	  padding: 2vh 0%;
+	}
+	.p-modal-button-container > a:not(:first-child){
+	  border-left: 0px;
+	}
+  }
+  
+  @media (prefers-reduced-motion) {
+	.p-modal-background,.p-modal  {
+	  transition: none;
+	}
+  }
+
+  
+
+html{
+	background:black;
+}
+
+
+.youtube-block{
+	 flex: 0 0 auto;
+	 
+}
+
+body {
+  height: 100%;
+}
+
+.p-layout {
+	display: flex;
+	flex-direction: column;
+	min-height: 87vh;
+}
+.content {
+	flex-grow: 1;
+}
+
+.controls{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.block1{
+	display: flex;
+	flex-direction: row;
+}
+.block2{
+	display: flex;
+	flex-direction: row;
+}
+
+.noactive{
+	display: none !important;
+}
+
+.w3-light-grey,.w3-hover-light-grey:hover,.w3-light-gray,.w3-hover-light-gray:hover{color:#000!important;background-color:#f1f1f14d!important}
+.w3-red,.w3-hover-red:hover{color:#fff!important;background-color:#f44336!important}
