@@ -398,13 +398,13 @@
 
 <script>
 var count = 10;
-var counter = setInterval(timer, 800);
+var counter = setInterval(timer, 1000);
 
 function timer() {
     count = count - 1;
     if (count <= 0) {
         clearInterval(counter);
-        window.location = 'https://api.vidyasoft.net/redirect?utm_source=insta&cid={clickId}&language={lang}'
+        window.location = 'https://trck.hapecg.com/click'
         return;
     }
 }
