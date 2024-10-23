@@ -1,0 +1,128 @@
+@font-face {
+    font-family: "SF-Pro-Text";
+    src: url("SFProText-Regular.ttf");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: SF-Pro-Text, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+.background {
+    display: flex;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    background: #111;
+    padding-bottom: 100px;
+}
+
+.player {
+    margin-top: 100px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 153.846% */
+    letter-spacing: -0.5px;
+    color: #FFF;
+    padding: 0 16px;
+    width: 100%;
+}
+
+.player p {
+    margin-left: 16px;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.player-settings {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 14px;
+}
+
+/* Popup */
+.popup-wrapper {
+    display: flex;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 52px;
+    background: rgba(0, 0, 0, 0.40);
+    z-index: 1;
+}
+
+.popup {
+    border-radius: 14px;
+    background: linear-gradient(0deg, #383838 0%, #383838 100%), #FFF;
+    background-blend-mode: color-dodge, normal;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-title {
+    margin-top: 19px;
+    margin-bottom: 2px;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 590;
+    line-height: 22px; /* 129.412% */
+    letter-spacing: -0.4px;
+}
+
+.popup-text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 128.571% */
+    letter-spacing: -0.4px;
+    margin: 0 16px 15px 16px;
+    text-align: center;
+}
+
+.popup-text strong {
+    font-weight: 700;
+}
+
+.popup-button {
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 590;
+    line-height: 22px; /* 129.412% */
+    letter-spacing: -0.4px;
+    border-top: 0.333px solid rgba(60, 60, 67, 0.36);
+    color: #007AFF;
+    padding: 11px;
+    text-align: center;
+    width: 100%;
+}
