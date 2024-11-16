@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title id="a1">Attention!</title>
+    <link rel="icon" href="https://vpnrewardson.com/lp3/images/fav.png" />
+    <link href="./files/618122e7088e8.css" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NEJJVNSK2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4NEJJVNSK2');
+</script>
+</head>
+
+  <body onload="translate()">
+    <div class="wrapper">
+      <div class="top_wrapper">
+        <h1 id="a2" class="translatable" data-translate="a2">Dikkat!</h1>
+        <p id="a3" class="translatable" data-translate="a3">
+          Güvenli modda izlemeye devam etmek için lütfen VPN uygulamasını
+          yükleyin.
+        </p>
+      </div>
+
+      <p class="button" id="a4" data-translate="a4">Install</p>
+    </div>
+    <section class="player">
+      <div class="player_content">
+        <img class="loading" src="./files/618122e708794.svg" alt="" />
+        <img class="play" src="./files/618122e7087e9.svg" alt="" />
+      </div>
+      <div class="top_icons">
+        <img src="./files/618122e70881c.svg" />
+        <img src="./files/618122e708842.svg" />
+      </div>
+      <div class="player_navigation">
+        <div class="player_navigation_item">
+          <div class="pause_play">
+            <img src="./files/618122e708859.svg" alt="" />
+            <img src="./files/618122e708870.svg" alt="" />
+          </div>
+          <p>00:0<span id="counter_wrapper">2</span>/1:52:46</p>
+        </div>
+        <div class="progress">
+          <div class="progress_load">
+            <div class="progress_line"></div>
+          </div>
+        </div>
+        <div class="player_navigation_item">
+          <img class="img_padding" src="./files/618122e708887.svg" alt="" />
+          <img src="./files/618122e70889d.svg" alt="" />
+          <img src="./files/618122e7088b2.svg" alt="" />
+          <img src="./files/618122e7088ca.svg" alt="" />
+        </div>
+      </div>
+    </section>
+    <a
+      href="https://go.moctrcks.com/click"
+      class="finlink"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999;
+      "
+    >
+    </a>
+
+    <script>
+      // URL'den parametreleri alacak fonksiyon
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      // version parametresini al
+      let version = getQueryParam("version") || "v1";
+      let versionNumber;
+
+      if (version === "v1") {
+        versionNumber = "lp1";
+      } else if (version === "v2") {
+        versionNumber = "lp2";
+      }
+
+      let fullDirectory = versionNumber;
+
+      // aff_sub1 ve aff_sub2 parametrelerini al
+      let aff_sub1 = getQueryParam("aff_sub1");
+      let aff_sub2 = getQueryParam("aff_sub2");
+      let sub_zone = getQueryParam("sub_zone");
+
+      // Bağlantıyı oluştur
+      let generatedLink = `https://go.fixvpn.net/index.php?camp_id=150&clickid=${aff_sub1}&aff_pubid=${aff_sub2}&sub_zone=${sub_zone}`;
+
+      // Tüm classı finlink olan a etiketlerini seç ve href olarak ver
+      document.querySelectorAll(".finlink").forEach((link) => {
+        link.href = generatedLink;
+      });
+
+      var links = document.getElementsByClassName("finlink");
+      for (var i = 0; i < links.length; i++)
+        links[i].setAttribute("href", generatedLink);
+
+      for (var j = 0; j < links.length; j++) {
+        links[j].addEventListener("click", function () {
+          window.onbeforeunload = null;
+        });
+      }
+
+      //Autoredirect
+      setTimeout(function () {
+        window.onbeforeunload = null;
+        window.location.href = fin_link;
+      }, 60000 * 2);
+
+      //Historyback
+      !(function () {
+        var t;
+        try {
+          for (t = 0; 10 > t; ++t) history.pushState({}, "", "");
+          onpopstate = function (t) {
+            window.onbeforeunload = null;
+            t.state && location.replace(fin_link);
+          };
+        } catch (o) {}
+      })();
+    </script>
+
+    <script>
+      var translation = {
+        source: {
+          a1: "Attention!",
+          a2: "Attention!",
+          a3: "Please Install the VPN App to continue watching in safe mode.",
+          a4: "Install",
+        },
+        en: {
+          a1: "Attention!",
+          a2: "Attention!",
+          a3: "Please Install the VPN App to continue watching in safe mode.",
+          a4: "Install",
+        },
+        de: {
+          a1: "Achtung!",
+          a2: "Achtung!",
+          a3: "Bitte installieren Sie die VPN-App, um die Wiedergabe im abgesicherten Modus fortzusetzen.",
+          a4: "Installieren",
+        },
+        fr: {
+          a1: "Attention!",
+          a2: "Attention!",
+          a3: "Veuillez installer l'application VPN pour continuer à regarder en mode sans échec.",
+          a4: "Installer",
+        },
+        es: {
+          a1: "¡Atención!",
+          a2: "¡Atención!",
+          a3: "Instala la aplicación VPN para continuar viendo en modo seguro",
+          a4: "Instalar",
+        },
+        it: {
+          a1: "Attenzione!",
+          a2: "Attenzione!",
+          a3: "Installa l'app VPN per continuare a guardare in modalità provvisoria.",
+          a4: "Installa",
+        },
+        pt: {
+          a1: "Atenção!",
+          a2: "Atenção!",
+          a3: "Instale o aplicativo VPN para continuar assistindo no modo de segurança.",
+          a4: "Instalar",
+        },
+        sv: {
+          a1: "Obs!",
+          a2: "Obs!",
+          a3: "Vänligen installera VPN-appen för att fortsätta titta i säkert läge.",
+          a4: "Installera",
+        },
+        no: {
+          a1: "Oppmerksomhet!",
+          a2: "Oppmerksomhet!",
+          a3: "Vennligst installer VPN-appen for å fortsette å se i sikker modus.",
+          a4: "Installer",
+        },
+        nl: {
+          a1: "Let op!",
+          a2: "Let op!",
+          a3: "Installeer de VPN-app om verder te kijken in de veilige modus.",
+          a4: "Installeren",
+        },
+        da: {
+          a1: "Opmærksomhed!",
+          a2: "Opmærksomhed!",
+          a3: "Installer venligst VPN-appen for at fortsætte med at se i sikker tilstand.",
+          a4: "Installer",
+        },
+        cs: {
+          a1: "Pozor!",
+          a2: "Pozor!",
+          a3: "Nainstalujte si prosím aplikaci VPN, abyste mohli pokračovat ve sledování v nouzovém režimu.",
+          a4: "Instalovat",
+        },
+        fi: {
+          a1: "Huomio!",
+          a2: "Huomio!",
+          a3: "Asenna VPN-sovellus jatkaaksesi katselua vikasietotilassa.",
+          a4: "Asenna",
+        },
+        el: {
+          a1: "Προσοχή!",
+          a2: "Προσοχή!",
+          a3: "Εγκαταστήστε την εφαρμογή VPN για να συνεχίσετε την παρακολούθηση σε ασφαλή λειτουργία.",
+          a4: "Εγκατάσταση",
+        },
+        hu: {
+          a1: "Figyelem!",
+          a2: "Figyelem!",
+          a3: "Telepítse a VPN alkalmazást a csökkentett módban való nézéshez.",
+          a4: "Telepítés",
+        },
+        ro: {
+          a1: "Atenție!",
+          a2: "Atenție!",
+          a3: "Vă rugăm să instalați aplicația VPN pentru a continua vizionarea în modul sigur.",
+          a4: "Instalare",
+        },
+        hr: {
+          a1: "Pažnja!",
+          a2: "Pažnja!",
+          a3: "Instalirajte VPN aplikaciju za nastavak gledanja u sigurnom načinu rada.",
+          a4: "Instaliraj",
+        },
+        lt: {
+          a1: "Dėmesio!",
+          a2: "Dėmesio!",
+          a3: "Įdiekite VPN programą, kad galėtumėte toliau žiūrėti saugiuoju režimu.",
+          a4: "Įdiegti",
+        },
+        lv: {
+          a1: "Uzmanību!",
+          a2: "Uzmanību!",
+          a3: "Lūdzu, instalējiet VPN lietotni, lai turpinātu skatīties drošajā režīmā.",
+          a4: "Instalēt",
+        },
+        sr: {
+          a1: "Пажња!",
+          a2: "Пажња!",
+          a3: "Инсталирајте ВПН апликацију да наставите да гледате у безбедном режиму.",
+          a4: "Инсталирај",
+        },
+        sk: {
+          a1: "Pozor!",
+          a2: "Pozor!",
+          a3: "Nainštalujte si aplikáciu VPN, aby ste mohli pokračovať v pozeraní v núdzovom režime.",
+          a4: "Inštalovať",
+        },
+        sl: {
+          a1: "Pozor!",
+          a2: "Pozor!",
+          a3: "Namestite aplikacijo VPN za nadaljevanje gledanja v varnem načinu.",
+          a4: "Namesti",
+        },
+        be: {
+          a1: "Увага!",
+          a2: "Увага!",
+          a3: "Калі ласка, усталюйце праграму VPN, каб працягнуць прагляд у бяспечным рэжыме.",
+          a4: "Усталяваць",
+        },
+        bg: {
+          a1: "Внимание!",
+          a2: "Внимание!",
+          a3: "Моля, инсталирайте VPN приложение, за да продължите да гледате в безопасен режим.",
+          a4: "Инсталиране",
+        },
+        pl: {
+          a1: "Uwaga!",
+          a2: "Uwaga!",
+          a3: "Zainstaluj aplikację VPN, aby kontynuować oglądanie w trybie awaryjnym.",
+          a4: "Zainstaluj",
+        },
+        uk: {
+          a1: "Увага!",
+          a2: "Увага!",
+          a3: "Будь ласка, установіть додаток VPN, щоб продовжити перегляд у безпечному режимі.",
+          a4: "Встановити",
+        },
+        zh: {
+          a1: "注意！",
+          a2: "注意！",
+          a3: "请安装 VPN 应用程序以在安全模式下继续观看。",
+          a4: "安装",
+        },
+        ko: {
+          a1: "주의!",
+          a2: "주의!",
+          a3: "안전 모드에서 계속 시청하려면 VPN 앱을 설치하세요.",
+          a4: "설치",
+        },
+        ja: {
+          a1: "注意!",
+          a2: "注意!",
+          a3: "セーフ モードで視聴を続けるには、VPN アプリをインストールしてください。",
+          a4: "インストール",
+        },
+        id: {
+          a1: "Perhatian!",
+          a2: "Perhatian!",
+          a3: "Silakan instal aplikasi VPN untuk terus menonton dalam mode aman.",
+          a4: "Instal",
+        },
+        vi: {
+          a1: "Chú ý!",
+          a2: "Chú ý!",
+          a3: "Vui lòng cài đặt ứng dụng VPN để tiếp tục xem ở chế độ an toàn.",
+          a4: "Cài đặt",
+        },
+        ms: {
+          a1: "Perhatian!",
+          a2: "Perhatian!",
+          a3: "Sila pasang apl VPN untuk terus menonton dalam mod selamat.",
+          a4: "Pasang",
+        },
+        hi: {
+          a1: "ध्यान!",
+          a2: "ध्यान!",
+          a3: "सुरक्षित मोड में देखना जारी रखने के लिए कृपया VPN ऐप इंस्टॉल करें।",
+          a4: "इंस्टॉल करें",
+        },
+        ar: {
+          a1: "انتباه!",
+          a2: "انتباه!",
+          a3: "الرجاء تثبيت تطبيق VPN لمتابعة المشاهدة في الوضع الآمن.",
+          a4: "تثبيت",
+        },
+        fil: {
+          a1: "Atensyon!",
+          a2: "Atensyon!",
+          a3: "Paki-install ang VPN app para magpatuloy sa panonood sa safe mode.",
+          a4: "I-install",
+        },
+        tr: {
+          a1: "Dikkat!",
+          a2: "Dikkat!",
+          a3: "Güvenli modda izlemeye devam etmek için lütfen VPN uygulamasını yükleyin.",
+          a4: "Yükle",
+        },
+        ur: {
+          a1: "توجہ!",
+          a2: "توجہ!",
+          a3: "محفوظ موڈ میں دیکھنا جاری رکھنے کے لیے براہ کرم VPN ایپ انسٹال کریں۔",
+          a4: "انسٹال کریں",
+        },
+        th: {
+          a1: "เรียน!",
+          a2: "เรียน!",
+          a3: "โปรดติดตั้งแอป VPN เพื่อรับชมต่อในเซฟโหมด",
+          a4: "ติดตั้ง",
+        },
+        bn: {
+          a1: "মনোযোগ!",
+          a2: "মনোযোগ!",
+          a3: "নিরাপদ মোডে দেখা চালিয়ে যেতে দয়া করে VPN অ্যাপ ইনস্টল করুন।",
+          a4: "ইনস্টল করুন",
+        },
+        he: {
+          a1: "שים לב!",
+          a2: "שים לב!",
+          a3: "אנא התקן את אפליקציית VPN כדי להמשיך לצפות במצב בטוח.",
+          a4: "התקן",
+        },
+      };
+
+      function replace_text(lang) {
+        var elements = document.getElementsByClassName("translatable");
+        for (var i = 0; i < elements.length; i++) {
+          var text = elements[i].getAttribute("data-translate");
+          var translatedText = translation[lang][text];
+          if (translatedText) {
+            elements[i].innerHTML = translatedText;
+          } else {
+            console.log("Translation not found for: " + text);
+          }
+        }
+      }
+
+      function translation_available(lang) {
+        if (translation[lang]) {
+          return lang;
+        } else {
+          console.log("Translation not found for language: " + lang);
+          return "source";
+        }
+      }
+
+      function detect_language() {
+        var language =
+          (navigator.languages && navigator.languages[0]) ||
+          navigator.language ||
+          navigator.userLanguage;
+        if (language.length > 3) {
+          language = language[0] + language[1];
+        }
+        if (["ar", "he", "fa", "ur"].indexOf(language) >= 0) {
+          document.documentElement.setAttribute("dir", "rtl");
+        }
+        return translation_available(language);
+      }
+
+      function translate() {
+        var language = detect_language();
+        replace_text(language);
+      }
+
+      // Call the translate function when the page is ready
+      document.addEventListener("DOMContentLoaded", function () {
+        translate();
+      });
+    </script>
+  </body>
+</html>
