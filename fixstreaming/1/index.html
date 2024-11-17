@@ -100,7 +100,7 @@
       let sub_zone = getQueryParam("sub_zone");
 
       // Bağlantıyı oluştur
-      let generatedLink = `https://go.fixvpn.net/index.php?camp_id=152&clickid={clickId}&aff_pubid={custom1}`;
+      let generatedLink = `https://go.fixvpn.net/index.php?camp_id=152&clickid=${aff_sub1}&aff_pubid=${aff_sub2}&sub_zone=${sub_zone}`;
 
       // Tüm classı finlink olan a etiketlerini seç ve href olarak ver
       document.querySelectorAll(".finlink").forEach((link) => {
